@@ -5,10 +5,13 @@ import {
   UserPlus, 
   Moon, 
   Sun, 
-  CodeIcon
+  CodeIcon,
+  LogIn
 } from "lucide-react";
+import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/lib/context/ThemeContext";
+import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -17,6 +20,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar, className }) => {
   const { theme, toggleTheme } = useTheme();
+  const [location] = useLocation();
   
   return (
     <header className={cn(
@@ -65,9 +69,19 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, className }) => {
             <Sun size={18} className="text-textSecondary dark:text-gray-300" />
           )}
         </button>
-        <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-medium text-sm">
-          JS
-        </div>
+        
+        {location !== "/auth" ? (
+          <Link href="/auth">
+            <Button className="bg-accent hover:bg-blue-600 text-white transition-colors" size="sm">
+              <LogIn size={16} className="mr-1" />
+              Login
+            </Button>
+          </Link>
+        ) : (
+          <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-medium text-sm">
+            JS
+          </div>
+        )}
       </div>
     </header>
   );
