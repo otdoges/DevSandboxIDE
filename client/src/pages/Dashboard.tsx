@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "wouter";
+import { useLocation } from "wouter";
 import Header from "@/components/Header";
 import { 
   Card, 
@@ -53,7 +53,7 @@ const languageData = [
 const COLORS = ["#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"];
 
 const Dashboard: React.FC = () => {
-  const [, navigate] = useNavigate();
+  const [, setLocation] = useLocation();
   
   return (
     <div className="flex flex-col min-h-screen bg-primary dark:bg-gray-900">
@@ -247,7 +247,7 @@ const Dashboard: React.FC = () => {
         <div className="mt-8 flex justify-center">
           <Button 
             className="bg-accent hover:bg-blue-700 text-white font-medium transition-colors duration-200"
-            onClick={() => navigate("/")}
+            onClick={() => setLocation("/")}
           >
             Back to Editor
           </Button>
