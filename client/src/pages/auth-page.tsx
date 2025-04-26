@@ -101,11 +101,13 @@ const AuthPage: React.FC = () => {
       {/* Left column - Auth form */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold font-inter text-textPrimary dark:text-white tracking-tight">
+          <div className="text-center relative">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary to-white dark:from-gray-900 dark:to-gray-800 opacity-50 animate-shimmer bg-[length:200%_100%]"></div>
+            <h2 className="text-3xl font-bold font-inter text-textPrimary dark:text-white tracking-tight animate-scale-in">
               Welcome to DevSandbox
+              <span className="inline-block animate-wave ml-2">👋</span>
             </h2>
-            <p className="mt-2 text-sm text-textSecondary dark:text-gray-400">
+            <p className="mt-2 text-sm text-textSecondary dark:text-gray-400 animate-scale-in" style={{ animationDelay: '100ms' }}>
               Sign in or create a new account to access our AI-powered cloud IDE
             </p>
           </div>
@@ -129,13 +131,13 @@ const AuthPage: React.FC = () => {
                     control={loginForm.control}
                     name="username"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '50ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Username</FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="Your username" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
@@ -146,23 +148,45 @@ const AuthPage: React.FC = () => {
                     control={loginForm.control}
                     name="password"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '150ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Password</FormLabel>
                         <FormControl>
                           <Input 
                             type="password" 
                             placeholder="Your password" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                  <div className="flex items-center justify-between animate-scale-in" style={{ animationDelay: '250ms' }}>
+                    <div className="flex items-center">
+                      <input 
+                        type="checkbox" 
+                        id="remember-login" 
+                        className="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded"
+                      />
+                      <label
+                        htmlFor="remember-login"
+                        className="ml-2 text-xs text-gray-600 dark:text-gray-400 hover:text-accent transition-colors duration-200"
+                      >
+                        Remember me
+                      </label>
+                    </div>
+                    <a
+                      href="#"
+                      className="text-xs text-accent hover:underline transition-all duration-200 hover:text-blue-700"
+                    >
+                      Forgot password?
+                    </a>
+                  </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-accent hover:bg-blue-600 text-white transition-colors"
+                    className="w-full bg-accent hover:bg-blue-600 text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-scale-in"
+                    style={{ animationDelay: '350ms' }}
                   >
                     Sign in
                   </Button>
@@ -187,13 +211,13 @@ const AuthPage: React.FC = () => {
                     control={registerForm.control}
                     name="username"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '50ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Username</FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="Choose a username" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
@@ -204,14 +228,14 @@ const AuthPage: React.FC = () => {
                     control={registerForm.control}
                     name="email"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '150ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Email</FormLabel>
                         <FormControl>
                           <Input 
                             type="email" 
                             placeholder="Your email address" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
@@ -222,14 +246,14 @@ const AuthPage: React.FC = () => {
                     control={registerForm.control}
                     name="password"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '250ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Password</FormLabel>
                         <FormControl>
                           <Input 
                             type="password" 
                             placeholder="Create a password" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
@@ -240,23 +264,37 @@ const AuthPage: React.FC = () => {
                     control={registerForm.control}
                     name="confirmPassword"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="animate-scale-in" style={{ animationDelay: '350ms' }}>
                         <FormLabel className="text-textPrimary dark:text-white">Confirm Password</FormLabel>
                         <FormControl>
                           <Input 
                             type="password" 
                             placeholder="Confirm your password" 
                             {...field} 
-                            className="bg-white dark:bg-gray-800"
+                            className="bg-white dark:bg-gray-800 transition-all duration-300 border-gray-300 dark:border-gray-700 focus:border-accent focus:ring-accent"
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                  <div className="flex items-center animate-scale-in" style={{ animationDelay: '450ms' }}>
+                    <input 
+                      type="checkbox" 
+                      id="terms" 
+                      className="h-4 w-4 text-accent focus:ring-accent border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="terms"
+                      className="ml-2 text-xs text-gray-600 dark:text-gray-400"
+                    >
+                      I agree to the <a href="#" className="text-accent hover:underline">Terms</a> and <a href="#" className="text-accent hover:underline">Privacy Policy</a>
+                    </label>
+                  </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-accent hover:bg-blue-600 text-white transition-colors"
+                    className="w-full bg-accent hover:bg-blue-600 text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-scale-in"
+                    style={{ animationDelay: '550ms' }}
                   >
                     Create Account
                   </Button>
@@ -279,6 +317,21 @@ const AuthPage: React.FC = () => {
       {/* Right column - Hero/Preview */}
       <div className="hidden lg:flex flex-1 bg-accent text-white">
         <div className="relative w-full h-full overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+          </div>
+          
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 opacity-80"></div>
+          
           {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-start pt-12 p-12 z-10 overflow-y-auto">
             <h1 className="text-4xl font-bold font-inter mb-2 animate-scale-in">
